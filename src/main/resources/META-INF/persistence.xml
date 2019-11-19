@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="cinePU" transaction-type="JTA">
+    <jta-data-source>jdbc/cine</jta-data-source>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Asiento</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.AsientoSala</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.AtributoAsiento</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.AtributoFuncion</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.AtributoSala</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Boleto</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.CaracteristicaAsiento</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.CaracteristicaFuncion</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.CaracteristicaSala</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Clasificacion</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Descuento</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Director</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Factura</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Funcion</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Genero</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.MenuConsumible</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Orden</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.OrdenConsumible</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Pago</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Pelicula</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Sala</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.Sucursal</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.TipoDescuento</class>
+    <class>ues.occ.edu.sv.ingenieria.prn335.cineData.entity.TipoPago</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+  </persistence-unit>
+</persistence>

@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Client sucursal</title>
+    </h:head>
+    <h:body>
+         <h1><h:outputLabel value="Sucursal"/></h1>
+        <h:form id="rango">
+            <h:panelGrid columns="2">
+                <p:outputLabel value="Primer valor"/>
+                <p:inputNumber value="#{sucursalBean.first}" decimalPlaces="0" emptyValue="0"/>
+                <p:outputLabel value="Tamaño"/>
+                <p:inputNumber value="#{sucursalBean.range}" decimalPlaces="0"/>
+            </h:panelGrid>
+            <p:commandButton value="Ver Rango" actionListener="#{sucursalBean.btnRangeHandler}" update=":table, datos"/>
+        </h:form>
+        <h:form id="table">
+            <p:dataTable var="scl" id="Sucursal" value="#{sucursalBean.lista}" rowKey="#{su.idSucursal}"
+                         selectionMode="single" selection="#{sucursalBean.select}" paginator="true" rows="5" paginatorPosition="bottom">
+                <f:facet name="header">
+                    <h:outputText value="Caracteristica de Sucursal"/>
+                </f:facet>
+                <p:column headerText="ID">
+                    <h:outputText value="#{scl.idSucursal}" />
+                </p:column>
+                <p:column headerText="Sucursal">
+                    <h:outputText value="#{scl.nombre}"/>
+                </p:column>
+                <p:column headerText="Direccion">
+                    <h:outputText value="#{scl.direccion}" />
+                </p:column>
+                <p:column headerText="Contacto">
+                    <h:outputText value="#{scl.contacto}" />
+                </p:column>
+                <p:column headerText="Activo">
+                    <h:outputText value="#{scl.activo?'Activo':'Inactivo'}" />
+                </p:column>
+                <p:ajax event="rowSelect" oncomplete="PF('salaSucursalDL').show();" listener="#{sucursalBean.salasSucursal}" update="table, :datos, salas"/>
+            </p:dataTable>
+        </h:form>
+        <h:form id="datos">
+            <p:messages id="mensajes" showDetail="true" closable="true" >
+                <p:autoUpdate/>
+            </p:messages>
+            <h:panelGrid columns="2">
+                <p:outputLabel value="ID:" for="idSala"/>
+                <p:inputText id="idSala" value="#{sucursalBean.id}" required="false"/>
+                <p:outputLabel value="Nombre:"/>
+                <p:inputText value="#{sucursalBean.nombre}"/>
+                <p:outputLabel value="Direccion:"/>
+                <p:inputTextarea value="#{sucursalBean.direccion}"/>
+                <p:outputLabel value="Contacto:"/>
+                <p:inputTextarea value="#{sucursalBean.contacto}" />
+                <p:outputLabel value="Activo:"/>
+                <p:selectBooleanCheckbox value="#{sucursalBean.activo}" />
+            </h:panelGrid>
+            <p:commandButton value="Nuevo" update=":table, datos" actionListener="#{sucursalBean.btnAgregarHandler}"/>
+            <p:commandButton value="Cancelar" update=":table, datos" actionListener="#{sucursalBean.btnCancelarHandler}"/>
+        </h:form>
+        <h:form id="salas">
+            <p:dialog header="Sala por sucursal" widgetVar="salaSucursalDL" modal="true">
+                <p:dataTable var="sala" id="Sala" value="#{sucursalBean.salasSelect}">
+
+                    <p:column headerText="ID">
+                        <h:outputText value="#{sala.idSala}" />
+                    </p:column>
+                    <p:column headerText="Sucursal">
+                        <h:outputText value="#{sala.sala}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
+
